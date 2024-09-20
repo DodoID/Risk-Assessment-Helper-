@@ -1,0 +1,105 @@
+
+.container {
+    display: flex;           /* Arrange the form and legend side-by-side */
+}
+
+.assessment-form {
+    flex: 1;                /* Allow the form to take up available space */
+    margin-right: 20px;      /* Add some space between the form and legend */
+}
+
+.legend {
+    flex: 0 0 600px;        /* Set a fixed width for the legend */
+    margin-top: 20px;        /* Add space above the legend */
+}
+
+body {
+    font-family: sans-serif; /* Use a clean, readable font */
+    line-height: 1.6;        /* Improve line spacing for better readability */
+    margin: 20px;            /* Add some margin around the content */
+    margin-bottom: 100px;
+
+}
+
+h1 {
+    text-align: center;       /* Center the heading */
+    margin-bottom: 20px;     /* Add space below the heading */
+    size: 35px;
+    
+}
+
+h2 {
+    text-align: left;       /* Center the heading */
+    margin-bottom: 20px;     /* Add space below the heading */
+    
+}
+
+label {
+    display: block;           /* Make labels block-level for better spacing */
+    margin-bottom: 5px;       /* Add space below labels */
+}
+
+select {
+    width: 200px;            /* Set a reasonable width for the dropdowns */
+    padding: 8px;             /* Add some padding for better appearance */
+    border: 1px solid #ccc;  /* Add a subtle border */
+    border-radius: 4px;       /* Slightly round the corners */
+    margin-bottom: 10px;      /* Add space below dropdowns */
+}
+
+#results {
+    margin-top: 20px;         /* Add space above the results */
+    border: 1px solid #ccc;  /* Add a border to the results area */
+    padding: 10px;            /* Add padding to the results area */
+    border-radius: 4px;       /* Slightly round the corners */
+}
+
+#results p {
+    margin: 5px 0;           /* Add spacing between result paragraphs */
+}
+
+.legend {
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+#factor-legend, #likelihood-legend {
+    margin-top: 10px;
+}
+
+#factor-legend ul, #likelihood-legend ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#factor-legend li, #likelihood-legend li {
+    margin-bottom: 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #f1f1f1;
+    font-size: 14px;
+    color: #555;
+    position: fixed; /* Makes the footer stick to the bottom */
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.green {
+    color: green;
+    font-weight: bold;
+}
+
+.amber {
+    color: orange;
+    font-weight: bold;
+}
+
+.red {
+    color: red;
+    font-weight: bold;
+}

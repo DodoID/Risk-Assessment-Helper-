@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Assessment</title>
+
+    <link rel="stylesheet" href="./Styles/Styles.css"> 
+</head>
+
+
+<body>
+
+    
+
+<h1>Project Risk Assessment Calculator</h1>
+
+<div class="container"> 
+    <div class="assessment-form">
+        <h2>Risk Assessment</h2>
+
+<label for="Financial">Financial:</label>
+<select id="Financial">
+    <option value="">Select</option> 
+    <option value="Critical">Critical</option>
+    <option value="Severe">Severe</option>
+    <option value="Major">Major</option>
+    <option value="Moderate">Moderate</option>
+    <option value="Minor">Minor</option>
+   
+</select>
+<label for="Financial_likelihood">Likelihood:</label>
+<select id="Financial_likelihood">
+    <option value="">Select</option>
+    <option value="Highly Unlikely">Highly Unlikely</option> 
+    <option value="Unlikely">Unlikely</option> 
+    <option value="Possible">Possible</option> 
+    <option value="Likely">Likely</option> 
+    <option value="Happening">Happening</option> 
+</select> 
+<br>
+
+<label for="Collections">Collections:</label>
+<select id="Collections">
+    <option value="">Select</option> 
+    <option value="Critical">Critical</option>
+    <option value="Severe">Severe</option>
+    <option value="Major">Major</option>
+    <option value="Moderate">Moderate</option>
+    <option value="Minor">Minor</option>
+   
+</select>
+<label for="Collections_likelihood">Likelihood:</label>
+<select id="Collections_likelihood">
+    <option value="">Select</option>
+    <option value="Highly Unlikely">Highly Unlikely</option> 
+    <option value="Unlikely">Unlikely</option> 
+    <option value="Possible">Possible</option> 
+    <option value="Likely">Likely</option> 
+    <option value="Happening">Happening</option> 
+</select> 
+<br>
+
+<label for="Physical">Physical:</label>
+<select id="Physical">
+    <option value="">Select</option> 
+    <option value="Critical">Critical</option>
+    <option value="Severe">Severe</option>
+    <option value="Major">Major</option>
+    <option value="Moderate">Moderate</option>
+    <option value="Minor">Minor</option>
+   
+
+</select>
+<label for="Physical_likelihood">Likelihood:</label>
+<select id="Physical_likelihood">
+    <option value="">Select</option>
+    <option value="Highly Unlikely">Highly Unlikely</option> 
+    <option value="Unlikely">Unlikely</option> 
+    <option value="Possible">Possible</option> 
+    <option value="Likely">Likely</option> 
+    <option value="Happening">Happening</option> 
+</select> 
+<br>
+
+<label for="Customer">Customer:</label>
+<select id="Customer">
+    <option value="">Select</option> 
+    <option value="Critical">Critical</option>
+    <option value="Severe">Severe</option>
+    <option value="Major">Major</option>
+    <option value="Moderate">Moderate</option>
+    <option value="Minor">Minor</option>
+   
+
+</select>
+<label for="Customer_likelihood">Likelihood:</label>
+<select id="Customer_likelihood">
+    <option value="">Select</option>
+    <option value="Highly Unlikely">Highly Unlikely</option> 
+    <option value="Unlikely">Unlikely</option> 
+    <option value="Possible">Possible</option> 
+    <option value="Likely">Likely</option> 
+    <option value="Happening">Happening</option> 
+</select> 
+<br>
+
+<label for="People">People:</label>
+<select id="People">
+    <option value="">Select</option> 
+    <option value="Critical">Critical</option>
+    <option value="Severe">Severe</option>
+    <option value="Major">Major</option>
+    <option value="Moderate">Moderate</option>
+    <option value="Minor">Minor</option>
+   
+
+</select>
+<label for="People_likelihood">Likelihood:</label>
+<select id="People_likelihood">
+    <option value="">Select</option>
+    <option value="Highly Unlikely">Highly Unlikely</option> 
+    <option value="Unlikely">Unlikely</option> 
+    <option value="Possible">Possible</option> 
+    <option value="Likely">Likely</option> 
+    <option value="Happening">Happening</option> 
+</select> 
+<br>
+
+<label for="Legislative">Legislative:</label>
+<select id="Legislative">
+    <option value="">Select</option> 
+    <option value="Critical">Critical</option>
+    <option value="Severe">Severe</option>
+    <option value="Major">Major</option>
+    <option value="Moderate">Moderate</option>
+    <option value="Minor">Minor</option>
+   
+
+</select>
+<label for="Legislative_likelihood">Likelihood:</label>
+<select id="Legislative_likelihood">
+    <option value="">Select</option>
+    <option value="Highly Unlikely">Highly Unlikely</option> 
+    <option value="Unlikely">Unlikely</option> 
+    <option value="Possible">Possible</option> 
+    <option value="Likely">Likely</option> 
+    <option value="Happening">Happening</option> 
+</select> 
+<br>
+
+<label for="Reputational">Reputational:</label>
+<select id="Reputational">
+    <option value="">Select</option> 
+    <option value="Critical">Critical</option>
+    <option value="Severe">Severe</option>
+    <option value="Major">Major</option>
+    <option value="Moderate">Moderate</option>
+    <option value="Minor">Minor</option>
+   
+
+</select>
+<label for="Reputational_likelihood">Likelihood:</label>
+<select id="Reputational_likelihood">
+    <option value="">Select</option>
+    <option value="Highly Unlikely">Highly Unlikely</option> 
+    <option value="Unlikely">Unlikely</option> 
+    <option value="Possible">Possible</option> 
+    <option value="Likely">Likely</option> 
+    <option value="Happening">Happening</option> 
+</select> 
+<br>
+
+
+
+<div id="results"></div>
+    </div> 
+
+    <div class="legend">
+        <h3>Legend</h3>
+        <div id="factor-legend"></div>
+        <div id="likelihood-legend"></div>
+    </div>
+</div> 
+
+
+<script>
+// Define dropdowns and resultsDiv at the beginning
+const dropdowns = document.querySelectorAll('select');
+const resultsDiv = document.getElementById('results');
+
+const riskTable = {
+    Financial: {
+        Critical: { impact: 5 },
+        Severe: { impact: 4 },
+        Major: { impact: 3 },
+        Moderate: { impact: 2 },
+        Minor: { impact: 1 }
+    },
+    Collections: { 
+        Critical: { impact: 5 }, // Replace with actual value from your table
+        Severe: { impact: 4 },   // Replace with actual value from your table
+        Major: { impact: 3 },     // Replace with actual value from your table
+        Moderate: { impact: 2 },   // Replace with actual value from your table
+        Minor: { impact: 1 }      // Replace with actual value from your table
+    },
+
+    Physical: { 
+        Critical: { impact: 5 }, // Replace with actual value from your table
+        Severe: { impact: 4 },   // Replace with actual value from your table
+        Major: { impact: 3 },     // Replace with actual value from your table
+        Moderate: { impact: 2 },   // Replace with actual value from your table
+        Minor: { impact: 1 }      // Replace with actual value from your table
+    },
+
+    Customer: { 
+        Critical: { impact: 5 }, // Replace with actual value from your table
+        Severe: { impact: 4 },   // Replace with actual value from your table
+        Major: { impact: 3 },     // Replace with actual value from your table
+        Moderate: { impact: 2 },   // Replace with actual value from your table
+        Minor: { impact: 1 }      // Replace with actual value from your table
+    },
+
+    People: { 
+        Critical: { impact: 5 }, // Replace with actual value from your table
+        Severe: { impact: 4 },   // Replace with actual value from your table
+        Major: { impact: 3 },     // Replace with actual value from your table
+        Moderate: { impact: 2 },   // Replace with actual value from your table
+        Minor: { impact: 1 }      // Replace with actual value from your table
+    },
+
+    Legislative: { 
+        Critical: { impact: 5 }, // Replace with actual value from your table
+        Severe: { impact: 4 },   // Replace with actual value from your table
+        Major: { impact: 3 },     // Replace with actual value from your table
+        Moderate: { impact: 2 },   // Replace with actual value from your table
+        Minor: { impact: 1 }      // Replace with actual value from your table
+    },
+
+    Reputational: { 
+        Critical: { impact: 5 }, // Replace with actual value from your table
+        Severe: { impact: 4 },   // Replace with actual value from your table
+        Major: { impact: 3 },     // Replace with actual value from your table
+        Moderate: { impact: 2 },   // Replace with actual value from your table
+        Minor: { impact: 1 }      // Replace with actual value from your table
+    },
+
+    
+};
+
+const likelihoodMapping = {
+    "Highly Unlikely": 'A' ,
+    "Unlikely": 'B',
+    "Possible": 'C',
+    "Likely": 'D',
+    "Happening": 'E'
+};
+
+const likelihoodExplanations = {
+    "Happening": "The event is expected to occur in most circumstances.",
+    "Likely": "The event will probably occur in many circumstances.",
+    "Possible": "The event might occur at some time.",
+    "Unlikely": "May occur within 10 years",
+    "Highly Unlikely": "May occur within 50 years"
+};
+
+dropdowns.forEach(dropdown => {
+    dropdown.addEventListener('change', updateResults);
+});
+
+function updateResults() {
+    const selectedCriteria = {};
+    dropdowns.forEach(dropdown => {
+        selectedCriteria[dropdown.id] = dropdown.value;
+    });
+
+    const riskLevels = {};
+    for (const category in riskTable) {
+        const impactLevel = selectedCriteria[category];
+        const likelihood = selectedCriteria[`${category}_likelihood`];
+
+        if (impactLevel !== "" && likelihood !== "") {
+            riskLevels[category] = assessRiskForCategory(
+                impactLevel,
+                likelihood,
+                riskTable[category]
+            );
+        }
+    }
+
+    updateLegend();
+
+    let highestRiskLevel = 0;
+    for (const category in riskLevels) {
+        const impactValue = parseInt(riskLevels[category].charAt(0));
+        highestRiskLevel = Math.max(highestRiskLevel, impactValue);
+    }
+
+    let resultsHTML = "";
+    for (const category in riskLevels) {
+        const riskLevel = riskLevels[category];
+        const impactValue = parseInt(riskLevel.charAt(0));
+        const likelihoodLetter = riskLevel.charAt(1);
+        const colorClass = getColorClass(impactValue, likelihoodLetter);
+
+        if (impactValue === highestRiskLevel) {
+            resultsHTML += `<p class="${colorClass}">${category}: ${riskLevel}</p>`;
+        } else {
+            resultsHTML += `<p class="${colorClass}">${category}: ${riskLevel}</p>`;
+        }
+    }
+    resultsDiv.innerHTML = resultsHTML;
+}
+
+function getColorClass(impactValue, likelihoodLetter) {
+    // Define the color logic here
+    if (impactValue === 1 && likelihoodLetter === 'A') {
+        return 'green';
+    } else if (impactValue === 1 && likelihoodLetter === 'B') {
+        return 'green';
+    } else if (impactValue === 1 && likelihoodLetter === 'C') {
+        return 'green';
+    } else if (impactValue === 1 && likelihoodLetter === 'D') {
+        return 'green';
+    } else if (impactValue === 1 && likelihoodLetter === 'E') {
+        return 'amber';
+    } else if (impactValue === 2 && likelihoodLetter === 'A') {
+        return 'green';
+    } else if (impactValue === 2 && likelihoodLetter === 'B') {
+        return 'green';
+    } else if (impactValue === 2 && likelihoodLetter === 'C') {
+        return 'green';
+    } else if (impactValue === 2 && likelihoodLetter === 'D') {
+        return 'amber';
+    } else if (impactValue === 2 && likelihoodLetter === 'E') {
+        return 'amber';
+    } else if (impactValue === 3 && likelihoodLetter === 'A') {
+        return 'green';
+    } else if (impactValue === 3 && likelihoodLetter === 'B') {
+        return 'green';
+    } else if (impactValue === 3 && likelihoodLetter === 'C') {
+        return 'amber';
+    } else if (impactValue === 3 && likelihoodLetter === 'D') {
+        return 'red';
+    } else if (impactValue === 3 && likelihoodLetter === 'E') {
+        return 'red';
+    } else if (impactValue === 4 && likelihoodLetter === 'A') {
+        return 'green';
+    } else if (impactValue === 4 && likelihoodLetter === 'B') {
+        return 'amber';
+    } else if (impactValue === 4 && likelihoodLetter === 'C') {
+        return 'red';
+    } else if (impactValue === 4 && likelihoodLetter === 'D') {
+        return 'red';
+    } else if (impactValue === 4 && likelihoodLetter === 'E') {
+        return 'red';
+    } else if (impactValue === 5 && likelihoodLetter === 'A') {
+        return 'amber';
+    } else if (impactValue === 5 && likelihoodLetter === 'B') {
+        return 'red';
+    } else if (impactValue === 5 && likelihoodLetter === 'C') {
+        return 'red';
+    } else if (impactValue === 5 && likelihoodLetter === 'D') {
+        return 'red';
+    } else if (impactValue === 5 && likelihoodLetter === 'E') {
+        return 'red';
+    
+    } else {
+        return ''; // Default or add more conditions as needed
+    }
+}
+
+// Define updateLegend outside of updateResults
+function updateLegend() {
+    const factorLegendDiv = document.getElementById('factor-legend');
+    const likelihoodLegendDiv = document.getElementById('likelihood-legend');
+
+    // Define impactExplanations inside the function
+    const impactExplanations = {
+        Financial: {
+            Critical: "Destruction or loss of significant asset(s).",
+            Severe: "Significant Financial impact.",
+            Major: "Major Financial impact.",
+            Moderate: "Moderate Financial impact.",
+            Minor: "Minor Financial impact."
+        },
+
+        Collections: {
+            Critical: "Destruction or loss of significant asset(s).",
+            Severe: "Significant Financial impact.",
+            Major: "Major Financial impact.",
+            Moderate: "Moderate Financial impact.",
+            Minor: "Minor Financial impact."
+        },
+
+        Physical: {
+            Critical: "Destruction or loss of significant asset(s).",
+            Severe: "Significant Financial impact.",
+            Major: "Major Financial impact.",
+            Moderate: "Moderate Financial impact.",
+            Minor: "Minor Financial impact."
+        },
+
+        Customer: {
+            Critical: "Destruction or loss of significant asset(s).",
+            Severe: "Significant Financial impact.",
+            Major: "Major Financial impact.",
+            Moderate: "Moderate Financial impact.",
+            Minor: "Minor Financial impact."
+        },
+
+        People: {
+            Critical: "Destruction or loss of significant asset(s).",
+            Severe: "Significant Financial impact.",
+            Major: "Major Financial impact.",
+            Moderate: "Moderate Financial impact.",
+            Minor: "Minor Financial impact."
+        },
+        
+        Legislative: {
+            Critical: "Destruction or loss of significant asset(s).",
+            Severe: "Significant Financial impact.",
+            Major: "Major Financial impact.",
+            Moderate: "Moderate Financial impact.",
+            Minor: "Minor Financial impact."
+        },
+
+        Reputational: {
+            Critical: "Destruction or loss of significant asset(s).",
+            Severe: "Significant Financial impact.",
+            Major: "Major Financial impact.",
+            Moderate: "Moderate Financial impact.",
+            Minor: "Minor Financial impact."
+        },
+
+        // Add other categories here
+    };
+
+    const likelihoodExplanations = {
+        "Happening": "Immediate",
+        "Likely": "May occur within 1 year",
+        "Possible": "May occur within 3 years",
+        "Unlikely": "May occur within 10 years",
+        "Highly Unlikely": "May occur within 50 years"
+    };
+    
+
+    // Populate factor legend
+    let factorLegendHTML = "<ul>";
+    for (const category in riskTable) {
+        factorLegendHTML += `<li><b>${category}:</b></li><ul>`;
+        for (const level in riskTable[category]) {
+            const explanation = impactExplanations[category]?.[level] || "Explanation not available";
+            factorLegendHTML += `<li>${level} - ${explanation}</li>`;
+        }
+        factorLegendHTML += `</ul>`;
+    }
+    factorLegendHTML += "</ul>";
+    factorLegendDiv.innerHTML = factorLegendHTML;
+
+    // Populate likelihood legend with explanations
+    let likelihoodLegendHTML = "<ul>";
+    for (const description in likelihoodMapping) {
+        const likelihoodExplanation = likelihoodExplanations[description] || "Explanation not available"; 
+        likelihoodLegendHTML += `<li>${description}: ${likelihoodMapping[description]} - ${likelihoodExplanation}</li>`;
+    }
+    likelihoodLegendHTML += "</ul>";
+    likelihoodLegendDiv.innerHTML = likelihoodLegendHTML;
+}
+
+function assessRiskForCategory(impactLevel, likelihood, categoryTable) {
+    const impactValue = categoryTable[impactLevel]?.impact || 0;
+
+    // Use the likelihoodMapping to get the correct letter
+    const likelihoodLetter = likelihoodMapping[likelihood] || ""; 
+
+    const riskLevel = impactValue > 0 && likelihoodLetter ? 
+        `${impactValue}${likelihoodLetter}` : 
+        "N/A"; 
+
+    return riskLevel;
+}
+
+
+</script>
+
+</body>
+
+<footer>
+    <p>&copy; 2024 Daniel Diaconu. All rights reserved.</p>
+</footer>
+
+
+</html>
